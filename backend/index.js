@@ -5,8 +5,14 @@ import shows from './models/shows.js'
 import bodyParser from 'body-parser'
 import axios from 'axios'
 import cors from 'cors'
+import dotenv from 'dotenv'
 
-mongoose.connect('mongodb://localhost:27017', { useNewUrlParser: true, useUnifiedTopology: true, dbName: 'shows', }, function (err) {
+dotenv.config({path:'.env'});
+
+// console.log(process.env.DB_URL)
+
+
+mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true, dbName: 'shows', }, function (err) {
     if (err) { throw err } else {
         console.log('Successfully connected');
     }
@@ -58,7 +64,10 @@ app.get('/shows/:id', (req, res) => {
 
 
 //shows/:id
-app.listen('27017', () => {
-    console.log('listening on port 27017')
+
+const host = process.env.HOST || '0.0.0.0'
+const port = process.env.PORT || '3000'
+app.listen(port,host, () => {
+    console.log('listening on port 3000')
 })
 
