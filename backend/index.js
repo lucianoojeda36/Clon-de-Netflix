@@ -5,14 +5,15 @@ import shows from './models/shows.js'
 import bodyParser from 'body-parser'
 import axios from 'axios'
 import cors from 'cors'
-import dotenv from 'dotenv'
+// import dotenv from 'dotenv'
+const dotenv = require('dotenv')
 
 dotenv.config({path:'.env'});
 
 // console.log(process.env.DB_URL)
 
 
-mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true, dbName: 'shows', }, function (err) {
+mongoose.connect('mongodb+srv://lucianodb:6oszxqRQwT330p79@cluster0.jdsjf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true, dbName: 'shows', }, function (err) {
     if (err) { throw err } else {
         console.log('Successfully connected');
     }
@@ -66,8 +67,15 @@ app.get('/shows/:id', (req, res) => {
 //shows/:id
 
 const host = process.env.HOST || '0.0.0.0'
-const port = process.env.PORT || '3000'
-app.listen(port,host, () => {
-    console.log('listening on port 3000')
+// const port = process.env.PORT
+
+app.set('port',process.env.PORT || 3000)
+
+// app.listen(port,host, () => {
+//     console.log('listening on port 3000')
+// })
+
+app.listen(app.get('port'), () => {
+    console.log(`server on port ${app.get('port')}`)
 })
 
