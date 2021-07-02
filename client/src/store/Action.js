@@ -4,7 +4,7 @@ export const GET_DATA= "GET_DATA";
 
 export const fetchData = (genres) => {
     return function (dispatch) {
-      axios.get(`http://localhost:3000/shows/${genres}`).then((payload) => {console.log("=================data===========>",payload)
+      axios.get(`/shows/${genres}`).then((payload) => {console.log("=================data===========>",payload)
         dispatch({ type: GET_DATA, payload: payload.data });
       });
     };

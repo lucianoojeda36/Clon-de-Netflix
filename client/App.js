@@ -19,8 +19,11 @@ import { Provider } from 'react-redux'
 import {store} from './src/store/store'
 import Details from './src/components/Details';
 import EpisodesPicker from './src/components/EpisodesPicker';
+import dotenv from "dotenv";
+import axios from 'axios';
 
-
+dotenv.config()
+axios.defaults.baseURL=process.env.REACT_APP_API || "http://localhost:3000"
 
 
 
