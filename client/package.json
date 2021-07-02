@@ -1,7 +1,8 @@
 {
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "react-scripts start",
+    "start": "expo start",
+    "build": "CI= react-scripts build",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
@@ -35,6 +36,7 @@
     "react-native-web": "^0.16.5",
     "react-navigation": "^4.4.4",
     "react-redux": "^7.2.4",
+    "react-scripts": "^4.0.3",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
     "request": "^2.79.0",
